@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Atelier Heritage — Global styling
+   ============================================================ */
+:root {
+  --paper: #f9f9f7;
+  --obsidian: #0d0d0d;
+  --bronze: #bfa37e;
+  --graphite: #262626;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f9f9f7;
+  color: #0d0d0d;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Typography families */
+.font-headline,
+.font-headline-md,
+.font-headline-lg,
+.font-headline-sm,
+.font-display-lg,
+.font-headline-lg-mobile {
+  font-family: "EB Garamond", Georgia, serif;
+}
+.font-body,
+.font-body-md,
+.font-body-lg,
+.font-label-caps,
+.font-price-display {
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+}
+
+/* Hide scrollbars (editorial horizontal carousels) */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Center-grow underline animation for nav links */
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom center;
+  transition: transform 0.3s ease-out;
+}
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+}
+
+/* Floating-label inputs: keep label lifted when filled via :not(:placeholder-shown) */
+.field-input {
+  border: 0;
+  border-bottom: 1px solid #262626;
+  background: transparent;
+  width: 100%;
+  padding: 0 0 0.5rem 0;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 16px;
+  color: #0d0d0d;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.field-input:focus {
+  border-bottom-color: #0d0d0d;
+}
+.field-input::placeholder {
+  color: transparent;
+}
+
+/* Prevent number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Autofill styling for the minimal aesthetic */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #f9f9f7 inset !important;
+  -webkit-text-fill-color: #0d0d0d !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Selection */
+::selection {
+  background: #bfa37e;
+  color: #f9f9f7;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
